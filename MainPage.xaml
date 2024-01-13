@@ -8,23 +8,22 @@
         <!--Napis "Galeria"-->
         <Label Text="Galeria" TextColor="White" FontSize="Header"/>
         <!--Obszar do przegldania zdjęć z domyślnie załadowanym kot1.jpg-->
-        <Image Source="kot1.jpg" x:Name="image" Aspect="AspectFill"/>
+        <Image Source="{Binding CurrentImagePath}" x:Name="image" Aspect="AspectFill"/>
         <!--Zdjęcia wyświetlają się w karuzeli-->
 
         <StackLayout Orientation="Horizontal">
             <Button Text="PREV" Clicked="PrevImage" HorizontalOptions="StartAndExpand"/>
-            
             <Button Text="NEXT" Clicked="NextImage" HorizontalOptions="EndAndExpand"/>
         </StackLayout>
 
 
         <Label Text="Który obraz wyświetlić?" TextColor="Black"/>
         <!--Pole tekstowe do wpisania numeru zdjęcia-->
-        <Entry x:Name="ImageNumber" TextChanged="NumericEntry_TextChanged" TextColor="Black" />
+        <Entry Text="{Binding CurrentImageNumber}" x:Name="ImageNumber" TextChanged="NumericEntry_TextChanged" TextColor="Black" Keyboard="Numeric"/>
 
         <StackLayout Orientation="Horizontal">
             <Label Text="Tło niebieskie?" TextColor="Black" />
-            <Switch x:Name="ThemeChange" Toggled="ThemeChange_Toggled" />
+            <Switch x:Name="ThemeChange" IsToggled="{Binding isBlueTheme}" Toggled="ThemeChange_Toggled" />
         </StackLayout>
         
         <!--Stopka-->
