@@ -17,9 +17,7 @@
             {
                 currentIndex = images.Length - 1;
             }
-            string imagePath = images[currentIndex];
-            // Update the image source with the new image path
-            image.Source = imagePath;
+            UpdateImageSource();
         }
 
         private void NextImage(object sender, EventArgs e)
@@ -29,21 +27,23 @@
             {
                 currentIndex = 0;
             }
-            string imagePath = images[currentIndex];
-            // Update the image source with the new image path
-            image.Source = imagePath; // Add this line to update the image source
+            UpdateImageSource();
         }
 
-        private void ImageNumber_TextChanged(object sender, TextChangedEventArgs e)
+        private void UpdateImageSource()
+        {
+            string imagePath = images[currentIndex];
+            image.Source = imagePath;
+        }
+
+        private void UpdateImageFromText()
         {
             if (int.TryParse(ImageNumber.Text, out int imageNumber))
             {
                 if (imageNumber >= 1 && imageNumber <= images.Length)
                 {
                     currentIndex = imageNumber - 1;
-                    string imagePath = images[currentIndex];
-                    // Update the image source with the new image path
-                    image.Source = imagePath;
+                    UpdateImageSource();
                 }
             }
         }
@@ -59,9 +59,18 @@
             {
                 // Change the background color back to green
                 this.BackgroundColor = Color.FromRgb(0, 128, 0); // Green color
-
             }
         }
-    }
 
+        private void NumericEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string newText = new string(e.NewTextValue.Where(char.IsDigit).ToArray());
+
+            if (e.NewTextValue != newText)
+            {
+                ImageNumber.Text = newText;
+            }
+            UpdateImageFromText();
+        }
+    }
 }
