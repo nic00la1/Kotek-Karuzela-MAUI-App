@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kotek.MainPage">
+
+    <VerticalStackLayout>
+        <!--Napis "Galeria"-->
+        <Label Text="Galeria"/>
+        <!--Obszar do przegldania zdjęć z domyślnie załadowanym kot1.jpg-->
+        <Image Source="kot1.jpg" x:Name="image"/>
+        <!--Zdjęcia wyświetlają się w karuzeli-->
+        <Button Text="PREV" Clicked="PrevImage"/>
+        <Button Text="NEXT" Clicked="NextImage"/>
+
+        <Label Text="Który obraz wyświetlić?"/>
+        <!--Pole tekstowe do wpisania numeru zdjęcia-->
+        <Entry x:Name="ImageNumber" TextChanged="ImageNumber_TextChanged"/>
+
+        <HorizontalStackLayout>
+            <Label Text="Tło niebieskie?" />
+            <Switch x:Name="ThemeChange" Toggled="ThemeChange_Toggled"/>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+    
+</ContentPage>
