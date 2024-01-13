@@ -1,25 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Kotek.MainPage">
+             x:Class="Kotek.MainPage"
+             BackgroundColor="#00796B">
 
-    <VerticalStackLayout>
+    <StackLayout>
         <!--Napis "Galeria"-->
-        <Label Text="Galeria"/>
+        <Label Text="Galeria" TextColor="White" FontSize="Header"/>
         <!--Obszar do przegldania zdjęć z domyślnie załadowanym kot1.jpg-->
-        <Image Source="kot1.jpg" x:Name="image"/>
+        <Image Source="kot1.jpg" x:Name="image" Aspect="AspectFill"/>
         <!--Zdjęcia wyświetlają się w karuzeli-->
-        <Button Text="PREV" Clicked="PrevImage"/>
-        <Button Text="NEXT" Clicked="NextImage"/>
 
-        <Label Text="Który obraz wyświetlić?"/>
+        <StackLayout Orientation="Horizontal">
+            <Button Text="PREV" Clicked="PrevImage" HorizontalOptions="StartAndExpand"/>
+            
+            <Button Text="NEXT" Clicked="NextImage" HorizontalOptions="EndAndExpand"/>
+        </StackLayout>
+
+
+        <Label Text="Który obraz wyświetlić?" TextColor="Black"/>
         <!--Pole tekstowe do wpisania numeru zdjęcia-->
-        <Entry x:Name="ImageNumber" TextChanged="ImageNumber_TextChanged"/>
+        <Entry x:Name="ImageNumber" TextChanged="ImageNumber_TextChanged" TextColor="Black"/>
 
-        <HorizontalStackLayout>
-            <Label Text="Tło niebieskie?" />
-            <Switch x:Name="ThemeChange" Toggled="ThemeChange_Toggled"/>
-        </HorizontalStackLayout>
-    </VerticalStackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Tło niebieskie?" TextColor="Black" />
+            <Switch x:Name="ThemeChange" Toggled="ThemeChange_Toggled" />
+        </StackLayout>
+        
+        <!--Stopka-->
+        <Label Text="Autor: Nicola Kaleta" TextColor="Black"/>
+    </StackLayout>
     
 </ContentPage>
